@@ -154,6 +154,11 @@ Data come from this:
 **How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
 Say so plainly — the disclosure is required, not penalised. -->
 
+I read and label them one by one. For example"
+- reaction: the commenter reports their own feeling or experience of the movie without explaining why it works
+- analysis: a claim about a character, theme, or filmmaking choice supported by a specific scene, line, or shot from the film
+- trivia: information from outside the movie — behind-the-scenes, cast background, interviews, real events, or other works
+
 **Counts per label:**
 
 | Label | Count | Share |
