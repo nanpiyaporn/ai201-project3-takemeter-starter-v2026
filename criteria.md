@@ -54,23 +54,22 @@ whether you hit them:
 ## 1.
 
 <!-- Your criterion. It must name a number. -->
-
+Balance <= 0.2
 
 
 **Why this target:**
-
-
+No label is more than 50% or less than 15% of the dataset." Your first 20 are 10 reaction, 7 analysis and 3 trivia, so this one is already worth watching.
 
 ---
 
 ## 2.
 
 <!-- Your criterion. -->
-
+Consistency  < = 0.2
 
 
 **Why this target:**
-
+When someone else labels the same 20 posts, we agree on at least 70% of them.
 
 
 ---
@@ -78,11 +77,11 @@ whether you hit them:
 ## 3.
 
 <!-- Your criterion. -->
-
+Confidence < = 0.2
 
 
 **Why this target:**
-
+Predictions with confidence ≥ 0.8 are right at least 75% of the time.
 
 
 ---
@@ -90,23 +89,23 @@ whether you hit them:
 ## 4.
 
 <!-- Your criterion. -->
-
+Per-label performance < = 0.2
 
 
 **Why this target:**
 
-
+Per-label save a lot of time when you have a lot of data to read.
 
 ---
 
 ## 5.
 
 <!-- Your criterion. -->
-
+Overall accuracy = 0.2
 
 
 **Why this target:**
-
+I want to make sure that correct label because many comment there are mix with more than one label, we need to focus what commentator focus on and pick only 1 label on each line.
 
 
 ---
