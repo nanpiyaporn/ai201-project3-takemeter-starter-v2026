@@ -41,6 +41,18 @@
 
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
+Topic is a conversation about https://www.reddit.com/r/movies in 4 sub topics (option that users comment recently and > 1.2 comments on that topic)
+I choose this topic based on popular topics content shows.
+
+1. You Can See Everything (5k+ comments)
+   (https://www.reddit.com/r/movies/comments/1x7493f/official_discussion_you_can_see_everything/)
+2. Primetime (2.1k comments)
+   (https://www.reddit.com/r/movies/comments/1wpk3fp/official_discussion_primetime_spoilers/)
+3. Spider-Man: Brand New Day (1.2k comments)
+   (https://www.reddit.com/r/movies/comments/1vbdbnx/official_discussion_spiderman_brand_new_day/)
+4. The Drama (4.5k comments) 
+   (https://www.reddit.com/r/movies/comments/1sb0qvz/official_discussion_the_drama_spoilers/)
+
 
 
 
@@ -54,33 +66,47 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `label_one`: "Reaction"
 
 **Definition:**
-
+The writer reports what they felt, laughed at or loved, often about their own theater. This is very common, maybe about 35% of what I read.
 **Example 1:**
->
+> “The mouthwash scene took me by surprise and got a good laugh outta me.”
 
 **Example 2:**
->
+“I was surprised by how packed and vocal my theater was. Easily the most gasps I’ve ever heard during a movie.”
 
-### `label_two`
+
+### `label_two`: "Analysis"
 
 **Definition:**
+The writer makes a claim about a character or the movie’s meaning and points to a specific scene, shot or line as proof. Also common, about 30%.
 
 **Example 1:**
->
+> “…he says ‘how did you get so drunk’ when we are shown a clearly framed shot of him topping up her wine…”
 
 **Example 2:**
+> “…the whole ‘game’ was started by her half revealing her husband’s secret and then pressured him into telling it…”
 >
+### `label_three`:"trivia"
+
+**Definition:**
+Outside facts and trivia. Behind-the-scenes info, actors’ other work, books and interviews. About 30%.
+**Example 1:**
+“Saw an interview with Gisondo, he said that was the very first scene he filmed… RPat did that completely improvised.”
+**Example 2:**
+“I think this type of thing is what I have been missing in the MCU for a while.”
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which three labels:**
+
+Reaction | Analysis | Trivia
 
 **The decision rule I used every time:**
 <!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
      if the tone is heated." -->
+For "Reaction" is when I see the vocabulary group of those 
 
 
 
@@ -91,7 +117,22 @@
 <!-- Where you collected from, how you labelled, your counts, and three hard
      cases. -->
 
+
 **Where the posts came from:**
+Data come from this:
+
+1. You Can See Everything (5k+ comments)
+   (https://www.reddit.com/r/movies/comments/1x7493f/official_discussion_you_can_see_everything/)
+2. Primetime (2.1k comments)
+   (https://www.reddit.com/r/movies/comments/1wpk3fp/official_discussion_primetime_spoilers/)
+3. Spider-Man: Brand New Day (1.2k comments)
+   (https://www.reddit.com/r/movies/comments/1vbdbnx/official_discussion_spiderman_brand_new_day/)
+4. The Drama (4.5k comments) 
+   (https://www.reddit.com/r/movies/comments/1sb0qvz/official_discussion_the_drama_spoilers/)
+
+
+
+
 
 **How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
 Say so plainly — the disclosure is required, not penalised. -->
