@@ -163,10 +163,12 @@ I read and label them one by one. For example"
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| reaction  | 111 | 44.4% |
+| analysis | 99 | %39.6 |
+| trivia | 40 |  16.0%|
+| **Total** | 250 | 100% |
+
+No label is over 70%
 
 **Three hard cases**
 
@@ -175,25 +177,26 @@ I read and label them one by one. For example"
 
 **1.**
 > *The post:*
->
+> "Also a teacher here. I taught high school for nearly 10 years, and I've been teaching middle school for the past few years. I agree that the movie explored the sensitive topic well. Especially at the middle school level, kids' brains are on fire these days. They are bombarded with and exposed to so many things, from silly nonsense to mildly harmful brainrot to all kinds of bullying to dysfunctional home lives to the worst things imaginable an easy click away on the internet. All these things affect kids in different ways to different degrees. I really admired how the movie stuck to its premise that Emma truly didn't have a reason for why she was about to commit such a horrible act that others would "accept." It was amusing how her friends, especially her partner, were trying to find a way to rationalize it. Yet sometimes people just do terrible things with motivations that others can't understand or buy into. The whole aesthetic thing for . I also want to mention that I've already listened to "Inside Out" by Odyssey at least 6 times since seeing the movie yesterday."
 > *Could have been:*
->
+> trivia → reaction
 > *I chose, because:*
-
-**2.**
+I chose reaction instead on AI pre-suggestion because it ia very long comment that commentator
+ tried to explain there movie situation to their reaction more than trivia ( something not relate to the movie)
+ **2.**
 > *The post:*
->
+> “I think that was symbolic of the internet connection?”
 > *Could have been:*
->
+> analysis → trivia
 > *I chose, because:*
-
+I chose trivia because no movie details ( they focus on internet connection) that can be for commenting on other comments.
 **3.**
 > *The post:*
->
+> "*"When we come bAaAck, the parade of men BEE-gins, and they COME... bearing geee-afts."*"
 > *Could have been:*
->
+>  reaction -> trivia
 > *I chose, because:*
-
+I chose trivia because it unclean that they focus on the movie, and they seem playing the wording
 ---
 
 ## The Training Run
@@ -202,15 +205,34 @@ I read and label them one by one. For example"
 
 **Base model:**
 
+`distilbert-base-uncased` (the notebook default)
+
 **Settings:** <!-- epochs, learning rate, batch size, seed -->
+3 epochs, learning rate 2e-5, batch size 16, max length 128 tokens, seed 42.
+Trained on: <device from section 1, e.g. cpu (CPU)>
 
 **Anything I changed from the defaults, and why:**
+
+I left all the hyperparameters at their defaults. This unit treats them as vocabulary,
+not decisions, and I wanted the first run to be a clean reference point. The only edit was
+`LABELS`, to match my taxonomy: `analysis`, `reaction`, `trivia` instead of the starter's
+`hot_take`.
 
 **Split sizes:** <!-- train / val / test, and per-label counts in the test
 split. If a label had fewer than about 8 in test, say so — it explains a lot
 of next unit's variance. -->
 
+250 rows, stratified 70/15/15 with seed 42 → train 174 / val 38 / test 38.
 
+| label    | train | val | test |
+|----------|------:|----:|-----:|
+| reaction |    77 |  17 |   17 |
+| analysis |    69 |  15 |   15 |
+| trivia   |    28 |   6 |    6 |
+
+`trivia` has only **6 examples in the test split** (under ~8). Each one is worth about 17
+points of recall, so its F1 will move a lot between seeds. That is a property of the
+small sample, not necessarily of the model.
 
 ---
 
@@ -225,17 +247,40 @@ of next unit's variance. -->
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* Pre-labels for the remaining 230 posts, using my label definitions
+  (`analysis`, `reaction`, `trivia`).
+- *What came back:* A suggested label for each post, kept in the `ai_suggestion` column.
+
+- *What I changed:* I read all 230. I agreed with 219 and changed 11. Examples:
+  - "Some really dark, twisted trauma. She's psychotic even before she knows her sister is
+    dead…": AI said `reaction`, I changed it to `analysis` because it reads the
+    character's behaviour, not just a feeling.
+  - "I think that was symbolic of the internet connection? It was cool": AI said `analysis`,
+    I changed it to `trivia`.
+  The changes went in every direction (5 to analysis, 4 to trivia, 2 to reaction), so the
+  AI wasn't wrong about one single label. The borders between my labels are where it struggled.
+
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* How to approach labelling 250 posts. I wasn't sure whether to label
+  everything by hand or get help.
+- *What came back:* Two options: (1) label everything myself, or (2) label a first batch
+  myself "cold", then let an AI pre-label the rest and check every one.
+
+- *What I changed:* I chose option 2, but I labelled 20 posts cold first, before seeing any AI
+  suggestion, so my own decision rule was set before the AI could influence it. I wrote a
+  short reason for each one in the `note` column.
+
 
 **Pre-labelling disclosure:**
+
+20 of 250 rows were labelled by me cold, with no AI input. The other 230 were pre-labelled
+by an AI, and I read and checked every one myself. The AI's original suggestion is kept in the
+`ai_suggestion` column, and the `note` column marks each row as `cold`, `pre-labelled, checked`,
+or `pre-labelled, checked — changed by me` (11 rows), so anyone can compare.
+
+
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
