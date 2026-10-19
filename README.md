@@ -69,7 +69,10 @@ I choose this topic based on popular topics content shows.
 ### `label_one`: "Reaction"
 
 **Definition:**
-The writer reports what they felt, laughed at or loved, often about their own theater. This is very common, maybe about 35% of what I read.
+The commenter reports their own feeling or experience of the
+movie — what they loved, laughed at, gasped at, or how their theater responded —
+without explaining *why* the film works or what it means.
+
 **Example 1:**
 > “The mouthwash scene took me by surprise and got a good laugh outta me.”
 
@@ -80,10 +83,14 @@ The writer reports what they felt, laughed at or loved, often about their own th
 ### `label_two`: "Analysis"
 
 **Definition:**
-The writer makes a claim about a character or the movie’s meaning and points to a specific scene, shot or line as proof. Also common, about 30%.
+The commenter makes a claim about a character, theme, or
+filmmaking choice and supports it by pointing to something specific inside
+the film — a scene, a line, a shot, or a plot event.
+
 
 **Example 1:**
-> “…he says ‘how did you get so drunk’ when we are shown a clearly framed shot of him topping up her wine…”
+> “Yeh, a bit that stayed with me was when they get home and he says 'how did you get so drunk' when we are shown a clearly framed shot of him topping up her wine without her asking just before the confessions are told
+”
 
 **Example 2:**
 > “…the whole ‘game’ was started by her half revealing her husband’s secret and then pressured him into telling it…”
@@ -91,7 +98,10 @@ The writer makes a claim about a character or the movie’s meaning and points t
 ### `label_three`:"trivia"
 
 **Definition:**
-Outside facts and trivia. Behind-the-scenes info, actors’ other work, books and interviews. About 30%.
+The comment's main content is information from outside the
+movie itself — behind-the-scenes facts, cast and crew background, interviews,
+real-life events, or other books, shows, and films.
+
 **Example 1:**
 “Saw an interview with Gisondo, he said that was the very first scene he filmed… RPat did that completely improvised.”
 **Example 2:**
@@ -99,14 +109,21 @@ Outside facts and trivia. Behind-the-scenes info, actors’ other work, books an
 
 ### The hardest boundary
 
-**Which three labels:**
-
-Reaction | Analysis | Trivia
+**Which two labels:** `reaction` vs `analysis`
 
 **The decision rule I used every time:**
 <!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
      if the tone is heated." -->
-For "Reaction" is when I see the vocabulary group of those 
+
+If the comment gives a **reason tied to a specific moment in the film**
+(it names or describes a scene, line, shot, or plot event AND says why it
+matters), it's `analysis` — even if it starts with "I loved" or is full of
+emotion. If it only says *that* a moment hit them (funny, shocking, amazing)
+without saying *why*, it's `reaction`.
+
+**Second rule (`trivia` vs the others):** If the outside fact is the main
+point, it's `trivia`. If an outside fact is only a small aside inside an
+argument about the film, label by the argument instead.
 
 
 

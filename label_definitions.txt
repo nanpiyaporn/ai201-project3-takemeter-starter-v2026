@@ -5,6 +5,10 @@
 #
 # Delete the examples below and put yours in.
 
-analysis: makes an argument backed by a specific, checkable fact
-hot_take: a confident claim with no support offered
-reaction: an immediate response to something that just happened
+#analysis: makes an argument backed by a specific, checkable fact
+#hot_take: a confident claim with no support offered
+#reaction: an immediate response to something that just happened
+
+   reaction: the commenter reports their own feeling or experience of the movie without explaining why it works
+   analysis: a claim about a character, theme, or filmmaking choice supported by a specific scene, line, or shot from the film
+   trivia: information from outside the movie — behind-the-scenes, cast background, interviews, real events, or other works
