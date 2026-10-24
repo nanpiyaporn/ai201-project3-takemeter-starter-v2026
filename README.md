@@ -296,10 +296,10 @@ or `pre-labelled, checked — changed by me` (11 rows), so anyone can compare.
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.395 | 0.711 | +0.316 |
+| Macro F1 | 0.189 | 0.513 | +0.324 |
+| F1 — `analysis` | 0.566 | 0.727 | +0.161 |
+| F1 — `reaction` | 0.000 | 0.811 | +0.811 |
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
