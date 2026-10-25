@@ -492,7 +492,7 @@ the model already fails on (seed 42 sent 4 of 6 trivia posts to analysis).
 ## The Improvement
 
 **What I changed:**
-Added 30 trivia posts (40 to 70), labelled by read and find the trivia post on 'candidates.csv' to 'labels.csv'
+Added 30 trivia posts (250 to 272), labelled by read and find the trivia post on 'candidates.csv' to 'labels.csv'
 
 **Which diagnosis pointed at it:**
  #4, too few trivia examples.
@@ -501,32 +501,35 @@ Added 30 trivia posts (40 to 70), labelled by read and find the trivia post on '
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. 1. Balance |	Each label 15–50% |	41/36/23%	|same	same|	MET |  
+| 2.  Consistency	| ≥ 70% agreement with staff|	93.3%	same|	same|	MET (unchanged)
+| 3. Confidence	|conf ≥ 0.8 is right ≥ 75%|	mean ≈ 0.40	|≈ 0.42|	≈ 0.40|	MISSED: nothing reaches 0.8
+| 4.  Per-label F1 |	Every label ≥ 0.40 |	trivia 0.00 |	0.00	|0.00	|MISSED
+| 5.  Accuracy	 | ≥ 0.60 on all seeds	| 0.659	| 0.561	| 0.610	| MISSED: seed 7 is below 0.60
 
 **Did it help, and how do I know:**
 
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
 
-
-
+- Trivia is still never predicted. The trivia column is 0 on all three seeds, even with 9 trivia posts in the test split now instead of 6. Seed 42 sent 5 to reaction and 4 to analysis.
+- Accuracy: before 0.711 / 0.632 / 0.526 (average 0.623), after 0.659 / 0.561 / 0.610 (average 0.610). The average barely moved. The spread between seeds shrank from 0.19 to 0.10, so results are steadier but not better.
+- Confidence went down, from about 0.44 to about 0.40. Pure guessing between 3 labels gives 0.33, so the model is close to guessing.
+- Caveat: the test split changed from 38 to 41 posts, so before and after aren't exactly the same posts.
 ---
 
 ## What's Still Broken
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
 
-
+More trivia data didn't fix trivia, so diagnosis #4 ("too few trivia examples") was at most part of the cause. The low confidence points to a bigger one: the model is undertrained. Three epochs at learning rate 2e-5 on about 190 training posts barely moves it away from guessing, so it falls back on the two big labels.
 
 **The gap between what I meant my labels to capture and what the model
 learned:**
 <!-- Two sentences. Your confusion matrix is the evidence. -->
 
-
+- Train for more epochs (around 8–10) or with a higher learning rate.
+- Use class weights so that missing trivia costs the model more.
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
