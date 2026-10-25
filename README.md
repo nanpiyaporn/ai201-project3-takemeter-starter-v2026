@@ -375,6 +375,38 @@ What I expected going in: "that fine-tuning would beat the zero-shot baseline, b
      have that can tell a LABELLING problem from a MODEL problem, and this
      section is graded on whether you used it that way. -->
 
+**First, is it a labelling problem or a model problem?** My agreement with
+staff was 28/30 = 93%, well above my 70% target. I can apply a written
+taxonomy consistently, so my 250 labels are unlikely to be noisy enough to
+explain the misses below. Both of my disagreements with staff were about
+`hot_take`, which isn't one of my labels, so neither tells me anything about
+the reaction / analysis / trivia boundaries. That points the misses at the
+model and the data size rather than at inconsistent labelling.
+
+**#4 Per-label F1 (missed): too few examples for trivia.** Trivia is 40 of
+250 posts (16%), so only about 34 reach training and 6 reach the test split.
+The model never predicts trivia on any seed: the trivia column of the
+confusion matrix is 0 on all three. Where the 6 trivia posts go depends on the
+seed. On seed 42, 4 went to analysis and 2 to reaction. On seed 2024, all 6
+went to reaction. If the trivia/analysis boundary were the problem, the errors
+would go one way consistently. Instead the model ignores the smallest label
+and sends those posts to whichever large label is nearest, which is the
+pattern you get from too few examples.
+
+**#5 Accuracy (missed): the task is out of reach at this data size, made
+worse by #4.** Accuracy ranges from 0.711 to 0.526 depending only on the seed.
+A 0.19 swing from reshuffling the same 250 posts means the model hasn't learned
+a stable boundary. On seed 2024, 8 of 15 analysis posts were called reaction,
+compared with 3 on seed 42. Every trivia post is also guaranteed wrong (6 of
+38 test posts = 16%), so the ceiling is about 0.84 before any other mistakes.
+
+**#3 Confidence (missed): the model is unsure about everything.** Mean
+confidence is 0.43–0.44 whether the prediction is right or wrong, which is
+barely above the 0.33 baseline for three labels. Nothing reaches 0.8, so the
+model can't separate its good predictions from its bad ones by confidence. It
+is the same cause as #5: with about 210 training posts, the model hasn't moved
+far from guessing.
+
 
 
 ---
@@ -417,8 +449,14 @@ What I expected going in: "that fine-tuning would beat the zero-shot baseline, b
 > `hot_take` / `analysis`
 
 > *My call, and why:*
-> `analysis` because '3%' something about number
-> 
+> Staff is right: `hot_take`. Rule 1 asks whether the fact carries the
+> argument. Here it doesn't: "so obviously the shoes are the whole story"
+> jumps to a conclusion the 3% can't support, and nothing rules out other
+> causes. It is almost word for word the taxonomy's own `hot_take` example.
+> I labelled it `analysis` because I saw a number, which is the exact
+> mistake rule 1 exists to prevent.
+>
+> *Which pile:*
 > *Which pile:*
 (a) the rule covered it and you applied it loosely — a consistency problem
 **2.**
@@ -427,13 +465,27 @@ What I expected going in: "that fine-tuning would beat the zero-shot baseline, b
 > *Staff said / I said:*
 > `hot_take` / `reaction` 
 > *My call, and why:*
-> `reaction` because the word ' enjoy' in the sentence
+> Staff is right: `hot_take`. Rule 2 asks whether the post is about the
+> writer or about the world. "Nobody actually enjoys the long run" is a
+> general claim about every runner, not a report of something that just
+> happened to the writer. There is no event, no "I", and no recent moment.
+> I went with `reaction` because of the feeling word "enjoy", but rule 2
+> says strength of feeling doesn't decide it. The claim does.
+>
 > *Which pile:*
 (a) the rule covered it and you applied it loosely — a consistency problem
 
 **What the pattern in my disagreements tells me:**
 
-Sometime it hard to tell what the right label should be. Human write the rule, but  not clear the rule. then, it result may not come the same ways 
+Both disagreements are pile (a), and both come from the same habit: I
+labelled from a surface cue instead of applying the rule. A number made me
+pick `analysis`, and a feeling word made me pick `reaction`, while the rules
+say to check whether the number does any work and whether the claim is about
+the writer. Both posts were ones staff marked as hard, and I agreed on the
+other 28, so it's not widespread. The same habit could still be in my own 250
+labels, though: a trivia post with a number in it may have been labelled
+`analysis` for the same reason, which would blur the trivia/analysis boundary
+the model already fails on (seed 42 sent 4 of 6 trivia posts to analysis).
 
 ---
 
