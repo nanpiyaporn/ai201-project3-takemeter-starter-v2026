@@ -456,9 +456,9 @@ far from guessing.
 > I labelled it `analysis` because I saw a number, which is the exact
 > mistake rule 1 exists to prevent.
 >
+
 > *Which pile:*
-> *Which pile:*
-(a) the rule covered it and you applied it loosely — a consistency problem
+(a) the rule covered it and I applied it loosely — a consistency problem
 **2.**
 > *The post:*
 > Nobody actually enjoys the long run. They enjoy having done it, which is a completely different thing, and the sport would be more honest if it said so.
@@ -473,7 +473,7 @@ far from guessing.
 > says strength of feeling doesn't decide it. The claim does.
 >
 > *Which pile:*
-(a) the rule covered it and you applied it loosely — a consistency problem
+(a) the rule covered it and I applied it loosely — a consistency problem
 
 **What the pattern in my disagreements tells me:**
 
