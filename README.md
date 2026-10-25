@@ -328,8 +328,8 @@ What I expected going in: "that fine-tuning would beat the zero-shot baseline, b
 | 1. Balance  |Each label 15-50% of data | 44/40/16% | same |same | Pass: a dataset fact, so it's the same for every seed |
 | 2. Consistency | >= 70% agreement with staff | 93.3% (28/30) | same  | same  |Pass: doesn't depend on the seed  |
 | 3. Confidence |conf >= 0.8 rigth >= 75%  | - | - | - | 	Can't measure: mean confidence is about 0.44, so almost nothing reaches 0.8. See below |
-| 4. Pre-label |  no number. You need to set one.| min F1 0.00 | 0.00 |0.00  | Misses any target, because trivia is 0 |
-| 5. Accuracy |  no number. You need to set one.| 0.711    | 0.632 |0.526  | Depends on your target. It must hold on all three seeds. |
+| 4. Pre-label | Every label F1 >= 0.40 (revised in unit 6) | min F1 0.00 | 0.00 |0.00  | Miss: trivia F1 is 0 on every seed |
+| 5. Accuracy | >= 0.60 on all three seeds (revised in unit 6) | 0.711    | 0.632 |0.526  | Miss: seed 2024 is below 0.60 |
 
 ### Confusion matrix
 
@@ -358,11 +358,11 @@ What I expected going in: "that fine-tuning would beat the zero-shot baseline, b
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Balance | Each label 15–50% of the data | MET | Split is 44 / 40 / 16%, all inside 15–50%. It's a dataset fact, so it's the same on every seed. Trivia at 16% is only just above the floor. |
+| 2 | Consistency | ≥ 70% agreement with staff | MET | 28/30 = 93.3% from `agreement.py`, well above 70%. It doesn't depend on the seed. |
+| 3 | Confidence | Predictions with conf ≥ 0.8 are right ≥ 75% of the time | MISSED | Mean confidence is about 0.43–0.44 on every seed, so almost no prediction reaches 0.8 and the model is never confident enough to meet the target. Accuracy of the most-confident third (0.83 / 0.92 / 0.67) also drops below 75% on seed 2024. |
+| 4 | Per-label F1 | Every label F1 ≥ 0.40 on all seeds (revised in unit 6) | MISSED | Trivia F1 is 0.00 on seeds 42, 7 and 2024. The model never predicts trivia (confusion-matrix column is all 0). |
+| 5 | Accuracy | ≥ 0.60 on all three seeds (revised in unit 6) | MISSED | 0.711 / 0.632 / 0.526. Seed 2024 falls below 0.60, so it doesn't hold on all three. |
 
 **Diagnoses**
 
@@ -387,7 +387,7 @@ What I expected going in: "that fine-tuning would beat the zero-shot baseline, b
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Agreement rate:** 28 / 30 =  93%
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
@@ -411,25 +411,29 @@ What I expected going in: "that fine-tuning would beat the zero-shot baseline, b
 
 **1.**
 > *The post:*
->
-> *Staff said / I said:*
->
-> *My call, and why:*
->
-> *Which pile:*
+>Times are down about 3% since the shoe rules changed, so obviously the shoes are the whole story and the sport has a problem.
 
+> *Staff said / I said:*
+> `hot_take` / `analysis`
+
+> *My call, and why:*
+> `analysis` because '3%' something about number
+> 
+> *Which pile:*
+(a) the rule covered it and you applied it loosely — a consistency problem
 **2.**
 > *The post:*
->
+> Nobody actually enjoys the long run. They enjoy having done it, which is a completely different thing, and the sport would be more honest if it said so.
 > *Staff said / I said:*
->
+> `hot_take` / `reaction` 
 > *My call, and why:*
->
+> `reaction` because the word ' enjoy' in the sentence
 > *Which pile:*
+(a) the rule covered it and you applied it loosely — a consistency problem
 
 **What the pattern in my disagreements tells me:**
 
-
+Sometime it hard to tell what the right label should be. Human write the rule, but  not clear the rule. then, it result may not come the same ways 
 
 ---
 

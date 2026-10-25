@@ -96,6 +96,14 @@ Per-label performance < = 0.2
 
 Per-label save a lot of time when you have a lot of data to read.
 
+> **Revised in unit 6:** Every label has an F1 of at least 0.40 on the
+> held-out set, on all three seeds.
+>
+> **Why revised:** "<= 0.2" didn't say what was being measured or which
+> direction counts as good, so I couldn't produce a verdict from it. 0.40 is
+> deliberately loose because trivia is my smallest label (16% of the data,
+> only about 6 posts in the test split), so its F1 will jump between seeds.
+
 ---
 
 ## 5.
@@ -106,6 +114,14 @@ Overall accuracy = 0.2
 
 **Why this target:**
 I want to make sure that correct label because many comment there are mix with more than one label, we need to focus what commentator focus on and pick only 1 label on each line.
+
+> **Revised in unit 6:** Overall accuracy of at least 0.60 on the held-out
+> set, on all three seeds.
+>
+> **Why revised:** "= 0.2" can't be checked as a goal. An accuracy of exactly
+> 0.2 is below the ~0.33 a random guesser gets on three labels. 0.60 is
+> clearly above chance, and it's a level I'd honestly call useful for sorting
+> posts that often mix more than one label.
 
 
 ---
