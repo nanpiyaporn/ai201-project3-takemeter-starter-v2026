@@ -492,8 +492,10 @@ the model already fails on (seed 42 sent 4 of 6 trivia posts to analysis).
 ## The Improvement
 
 **What I changed:**
+Added 30 trivia posts (40 to 70), labelled by read and find the trivia post on 'candidates.csv' to 'labels.csv'
 
 **Which diagnosis pointed at it:**
+ #4, too few trivia examples.
 
 ### Run Log — After
 
