@@ -325,29 +325,29 @@ What I expected going in: "that fine-tuning would beat the zero-shot baseline, b
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Balance  |Each label 15-50% of data | 44/40/16% | same |same | Pass: a dataset fact, so it's the same for every seed |
+| 2. Consistency | >= 70% agreement with staff | 93.3% (28/30) | same  | same  |Pass: doesn't depend on the seed  |
+| 3. Confidence |conf >= 0.8 rigth >= 75%  | - | - | - | 	Can't measure: mean confidence is about 0.44, so almost nothing reaches 0.8. See below |
+| 4. Pre-label |  no number. You need to set one.| min F1 0.00 | 0.00 |0.00  | Misses any target, because trivia is 0 |
+| 5. Accuracy |  no number. You need to set one.| 0.711    | 0.632 |0.526  | Depends on your target. It must hold on all three seeds. |
 
 ### Confusion matrix
 
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
+| true \ predicted | reaction |analysis  | trivia |
 |---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| reaction |  15| 2 |0  |
+| analysis | 3 |12  |0  |
+| trivia | 2 |4  | 0 |
 
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
 
-
+4 real trivia posts were called analysis and none went the other way, so the model never learned trivia as its own label and treats factual posts as analysis.
 
 ---
 
