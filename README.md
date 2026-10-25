@@ -300,17 +300,22 @@ or `pre-labelled, checked — changed by me` (11 rows), so anyone can compare.
 | Macro F1 | 0.189 | 0.513 | +0.324 |
 | F1 — `analysis` | 0.566 | 0.727 | +0.161 |
 | F1 — `reaction` | 0.000 | 0.811 | +0.811 |
+| F1 — `trivia` | 0.000 | 0.000 | +0.000 |
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
 
+I did not write a prediction down before running the trained model, so I can't claim one. 
+What I expected going in: "that fine-tuning would beat the zero-shot baseline, but I wasn't sure by how much, and I thought trivia would be the hardest label because it's the smallest". What surprised me:  "the baseline got 0 F1 on reaction, it never predicted it at all"
+
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
 
-
-
+- The baseline didn't really classify anything. In baseline_results.json, the zero-shot model labelled all 38 test posts as analysis (analysis recall = 1.0, precision = 0.39 = 15/38). Its 39.5% accuracy is just the share of test posts that happen to be analysis. It never got a reaction or trivia right.
+- Fine-tuning added nothing for trivia. In results.json the trained model also never predicts trivia: all 6 trivia posts went to analysis (4) or reaction (2). Its F1 is 0.00 for both models. Your table is missing that row. Add | F1 — trivia | 0.000 | 0.000 | +0.000 | so the gap is visible. This is also why macro F1 is only 0.51 even though accuracy is 0.71.
+  - The test set is small. With 38 posts, each one is worth about 2.6 accuracy points, so read +0.316 as "clearly better," not as a precise figure.
 ---
 
 ## Run Log — Before

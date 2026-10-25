@@ -1,0 +1,18 @@
+{
+  "compared": 30,
+  "agreed": 28,
+  "agreement_rate": 0.9333333333333333,
+  "disagreements": [
+    {
+      "text": "Times are down about 3% since the shoe rules changed, so obviously the shoes are the whole story and the sport has a problem.",
+      "staff": "hot_take",
+      "mine": "analysis"
+    },
+    {
+      "text": "Nobody actually enjoys the long run. They enjoy having done it, which is a completely different thing, and the sport would be more honest if it said so.",
+      "staff": "hot_take",
+      "mine": "reaction"
+    }
+  ],
+  "staff_posts_not_in_mine": 0
+}
